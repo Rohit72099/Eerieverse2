@@ -1,16 +1,25 @@
 {
-    "version": 3,
-    "builds": [
-      {
-        "src": "index.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "index.js"
-      }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/api/user/dashboard"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/index.js"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/user/dashboard"
+    }
+  ]
+}
