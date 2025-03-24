@@ -2,7 +2,7 @@ let  express = require('express')
 let mongoose = require('mongoose');
 const router = require('./app/routes/user.route');
 const path = require('path');
-const helmet = require("helmet");
+
 
 let cors = require('cors');
 let cookieParser = require('cookie-parser');
@@ -23,19 +23,19 @@ app.set('views', path.join(__dirname, 'app', 'views'));
 app.set('view engine', 'ejs');
 
 
-// Use helmet with custom CSP
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      fontSrc: ["'self'", "https://eerieverse2.vercel.app"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      connectSrc: ["'self'"],
-      imgSrc: ["'self'", "data:"],
-    },
-  })
-);
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", 
+      "default-src 'self'; " +
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; " +
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+      "font-src 'self' https://fonts.gstatic.com https://eerieverse2.vercel.app; " +
+      "img-src 'self' data:; " +
+      "connect-src 'self' https://eerieverse2.vercel.app; " +
+      "object-src 'none';"
+    );
+    next();
+  });
+  
 
 
 
