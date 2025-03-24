@@ -5,6 +5,7 @@ let { User } = require('../model/user.model');
 
 
 
+
 const { registerUser, loginUser, logoutUser} = require('../controller/user.controller');
 const { checkExitedUser } = require('../middleware/checkExitedUser');
 const { requireAuth } = require('../middleware/auth.middleware');
@@ -55,7 +56,7 @@ router.put('/:id/unlike', requireAuth, unlikeStory);
 
 
 // UnProtected routes
-router.get('/dashboard', (req, res) => {
+router.get('/', (req, res) => {
     res.render('dashboard', { user: req.user });
 });
 

@@ -2,6 +2,7 @@ let  express = require('express')
 let mongoose = require('mongoose');
 const router = require('./app/routes/user.route');
 const path = require('path');
+const helmet = require("helmet");
 
 let cors = require('cors');
 let cookieParser = require('cookie-parser');
@@ -20,6 +21,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, 'app', 'views'));
 app.set('view engine', 'ejs');
+
+
+// Use helmet with custom CSP
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      fontSrc: ["'self'", "https://eerieverse2.vercel.app"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      connectSrc: ["'self'"],
+      imgSrc: ["'self'", "data:"],
+    },
+  })
+);
+
+
 
 //import routes
 app.use('/api/user',router);
