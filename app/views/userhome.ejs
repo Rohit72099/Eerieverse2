@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://code.jquery.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+">
+
   <title>User Home - Eerieverse</title>
   <style>
     /* Reset and Base */
@@ -13,7 +20,8 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: 'Times New Roman', Times, serif;
   background-color: #1a1a1a;
   color: #fff;
   line-height: 1.6;
@@ -248,7 +256,7 @@ body {
   <div class="userWel">
     <div class="profile">
       <div class="avatar">
-        <img src="user-avatar.png" alt="User Avatar" />
+        <img src="#" alt="User Avatar" />
       </div>
       <div class="name">
         <h2><%= user.username %></h2>
