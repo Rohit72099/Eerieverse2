@@ -74,7 +74,7 @@ router.get("/userhome" ,requireAuth, async (req, res) => {
         const user = await User.findById(req.user.id); // Fetch user from DB
     
         if (!user) {
-            return res.redirect('/api/user/login'); // Redirect if user not found
+            return res.redirect('/login'); // Redirect if user not found
         }
         // const stories = await Story.find().sort({ createdAt: -1 }).limit(10);
         const stories = await Story.find()

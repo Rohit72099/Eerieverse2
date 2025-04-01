@@ -12,7 +12,7 @@ let createStory = async (req, res) => {
         });
         await story.save();
         // console.log(story);
-        res.redirect('/api/user/userhome');
+        res.redirect('/userhome');
     
     }
     catch (error) {
