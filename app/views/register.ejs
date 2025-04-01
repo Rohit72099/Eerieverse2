@@ -151,7 +151,7 @@
                 <button type="submit" class="btn register-btn">Register</button>
             </form>
 
-            <p class="login-link">Already have an account? <a href="/api/user/login">Login here</a></p>
+            <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
         </div>
     </section>
 
@@ -175,14 +175,14 @@
                 return;
             }
 
-            const response = await fetch("/api/user/register", {
+            const response = await fetch("/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, username, email, password, role })
             });
 
             if (response.ok) {
-                window.location.href = "/api/user/login"; // Redirect to login page
+                window.location.href = "/login"; // Redirect to login page
             } else {
                 const errorText = await response.text();
                 alert(errorText);
