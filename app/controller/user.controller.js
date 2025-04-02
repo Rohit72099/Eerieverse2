@@ -71,7 +71,7 @@ const logoutUser = (req,res)=>{
     //code for logout
     try{
         res.cookie('jwt', '', { maxAge: 1 });
-        res.status(200).redirect('/dashboard');
+        res.status(200).redirect('/');
 
     }catch(error){
         res.status(501).json({message:"Error in logging out"}); 
