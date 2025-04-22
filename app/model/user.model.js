@@ -26,9 +26,16 @@ const userSchema = new Schema({
     },
     role: {
         type: String,
-        enum: ['reader', 'writer'],
+        enum: ['reader', 'writer','admin'],
+        default:'reader',
         required:[true, 'please enter your role']
     }
+    // avtar:{
+    //     type:String,
+    //     required:true,
+    // },
+    // likedStories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story' }],
+    // savedStories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story' }],
 
     
 },{timestamps: true});

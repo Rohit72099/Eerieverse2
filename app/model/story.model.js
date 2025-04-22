@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
+// Predefined list of genres
+// const GENRES = ['Horror', 'Mystery', 'Fantasy', 'Sci-Fi', 'Thriller', 'Romance', 'Drama','General'];
 
 const storySchema = new Schema({
     title:{
@@ -19,7 +20,8 @@ const storySchema = new Schema({
     },
     // genre:{
     //     type: String,
-    //     required: true
+    //     required: true,
+    //     enum:GENRES
     // },
     status:{
         type: String,

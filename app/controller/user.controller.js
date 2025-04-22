@@ -29,7 +29,7 @@ let registerUser =async (req,res)=>{
         let token = createToken(user._id);
         // console.log(token);
         res.cookie('jwt', token, { httpOnly: true, maxAge: 86400000 });
-        res.status(201).json({message: "User registered successfully"});
+        // res.status(201).json({message: "User registered successfully"});
         res.redirect('/login');
     }).catch((error)=>{
         res.status(500).json({message: error.message});
