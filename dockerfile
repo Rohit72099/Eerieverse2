@@ -1,20 +1,20 @@
-# Use official Node.js image as base
-FROM node:18-alpine
+# Use official Node.js base image
+FROM node:20
 
-# Set the working directory in the container
+# Create app directory inside container
 WORKDIR /app
 
-# Copy package.json and package-lock.json first (to optimize caching)
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Install app dependencies
 RUN npm install
 
-# Copy all files from local machine to container
+# Copy the rest of the application code
 COPY . .
 
-# Expose the port your Node.js app runs on
+# Expose port (update if your app uses a different port)
 EXPOSE 8000
 
-# Command to start the application
-CMD ["node", "index.js"]
+# Run the application
+CMD ["npm", "start"]
