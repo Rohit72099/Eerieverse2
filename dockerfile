@@ -1,5 +1,5 @@
 # Use official Node.js base image
-FROM node:20
+FROM node:slim
 
 # Create app directory inside container
 WORKDIR /app
